@@ -1,0 +1,18 @@
+﻿@{
+
+    ViewData["Title"] = "Index";
+}
+<h1>Use the topnav to navigate to the different sections,</h1>
+@if (!User.Identity.IsAuthenticated)
+{
+    <p>Welcome, please login</p>
+}
+else {
+    <p>Welcome, logged in!</p>
+}
+@if (User.IsInRole("User")) {
+    <p>Welcome User</p>
+}
+@if (User.IsInRole("Admin")) {
+    <p>Welcome Admin</p>
+}

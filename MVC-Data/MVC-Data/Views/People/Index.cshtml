@@ -1,0 +1,38 @@
+﻿
+@using MVC_Data.Models;
+@model IEnumerable<Person>
+@{ ViewData["Title"] = "Index"; }
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h1>People</h1>
+@Html.ActionLink("Create", "Create", "People") | 
+@Html.ActionLink("Search", "Search", "People")
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>PhoneNumber</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Language</th>
+            <th>Edit</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.PhoneNumber</td>
+            <td>@(item.tempCityName == null ? "-" : item.tempCityName)</td>
+            <td>@(item.tempCountryName == null ? "-" : item.tempCountryName)</td>
+            <td>@(item.tempLanguageName == null ? "-" : item.tempLanguageName)</td>
+            <td><a asp-action="Edit" asp-route-Name="@item.Name">Edit</a></td>
+            <td><a asp-action="Remove" asp-route-Name="@item.Name">Delete</a></td>
+        </tr>
+       }
+    </tbody>
+</table>
